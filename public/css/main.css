@@ -1,31 +1,229 @@
-html,
-body {
-    background-color: lightblue;
-    font-family: Arial, sans-serif;
+/* ==============================
+   CSE 340 Service Network
+   Professional Responsive Design
+================================ */
+
+/* Color and font variables */
+:root {
+    --primary-color: #17324d;
+    --secondary-color: #087f8c;
+    --accent-color: #e6f4f1;
+    --background-color: #f3f6f9;
+    --text-color: #263746;
+    --white: #ffffff;
+    --border-color: #dce4eb;
+
+    --heading-font: 'Segoe UI', Arial, sans-serif;
+    --body-font: 'Segoe UI', Arial, sans-serif;
+}
+
+/* General reset */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    font-family: var(--body-font);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==============================
+   Navigation
+================================ */
+
+nav {
+    background-color: var(--primary-color);
+    padding: 1rem 2rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.5rem 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+nav a:hover {
+    border-bottom-color: #54d1c5;
+}
+
+nav a:focus-visible {
+    outline: 3px solid #54d1c5;
+    outline-offset: 5px;
+}
+
+/* ==============================
+   Main Content
+================================ */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(23, 50, 77, 0.08);
+    flex: 1;
+}
+
+h1 {
+    font-family: var(--heading-font);
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+h2 {
+    font-family: var(--heading-font);
+    color: var(--secondary-color);
+    font-size: 1.7rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    max-width: 75ch;
+}
+
+/* ==============================
+   Main Logo
+================================ */
+
+.main-logo {
+    display: block;
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    margin: 2rem auto;
+    border-radius: 10px;
+}
+
+/* ==============================
+   Footer
+================================ */
+
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+footer p {
+    margin: 0 auto;
+    font-size: 0.95rem;
+}
+
+/* ==============================
+   Tablet Screens
+================================ */
+
+@media screen and (max-width: 768px) {
+
     nav {
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+        padding: 1rem;
+    }
 
-        li {
-            display: inline;
-            margin-right: 15px;
-        }
+    nav ul {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
 
-        a {
-            text-decoration: none;
-            color: #333;
-            font-weight: bold;
+    main {
+        width: 94%;
+        padding: 2rem;
+        margin: 2rem auto;
+    }
 
-            &:hover {
-                color: #0066cc;
-            }
-        }
+    h1 {
+        font-size: 2.1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ==============================
+   Mobile Screens
+================================ */
+
+@media screen and (max-width: 480px) {
+
+    nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    nav a {
+        padding: 0.4rem;
+        font-size: 1rem;
+    }
+
+    main {
+        width: 94%;
+        padding: 1.25rem;
+        margin: 1rem auto;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.35rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .main-logo {
+        margin: 1.5rem auto;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        transition: none !important;
     }
 }
