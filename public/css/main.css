@@ -1,9 +1,3 @@
-/* ==============================
-   CSE 340 Service Network
-   Professional Responsive Design
-================================ */
-
-/* Color and font variables */
 :root {
     --primary-color: #17324d;
     --secondary-color: #087f8c;
@@ -17,7 +11,6 @@
     --body-font: 'Segoe UI', Arial, sans-serif;
 }
 
-/* General reset */
 * {
     margin: 0;
     padding: 0;
@@ -38,9 +31,7 @@ body {
     flex-direction: column;
 }
 
-/* ==============================
-   Navigation
-================================ */
+
 
 nav {
     background-color: var(--primary-color);
@@ -78,9 +69,7 @@ nav a:focus-visible {
     outline-offset: 5px;
 }
 
-/* ==============================
-   Main Content
-================================ */
+
 
 main {
     width: 90%;
@@ -117,9 +106,6 @@ p {
     max-width: 75ch;
 }
 
-/* ==============================
-   Main Logo
-================================ */
 
 .main-logo {
     display: block;
@@ -130,9 +116,7 @@ p {
     border-radius: 10px;
 }
 
-/* ==============================
-   Footer
-================================ */
+
 
 footer {
     background-color: var(--primary-color);
@@ -147,9 +131,6 @@ footer p {
     font-size: 0.95rem;
 }
 
-/* ==============================
-   Tablet Screens
-================================ */
 
 @media screen and (max-width: 768px) {
 
@@ -177,9 +158,7 @@ footer p {
     }
 }
 
-/* ==============================
-   Mobile Screens
-================================ */
+
 
 @media screen and (max-width: 480px) {
 
@@ -217,7 +196,7 @@ footer p {
     }
 }
 
-/* Respect reduced-motion preferences */
+
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
