@@ -88,3 +88,59 @@ VALUES
 (3, 'Holiday Giving Project',
  'Collect and distribute holiday gifts to families in need.',
  'Unity Community Center', '2026-12-07');
+
+
+CREATE TABLE service_categories (
+    categories_id SERIAL PRIMARY KEY,
+    title VARCHAR(150) NOT NULL
+);
+
+
+
+CREATE TABLE service_project_categories (
+   project_id INTEGER NOT NULL,
+   categories_id INTEGER NOT NULL,
+
+   PRIMARY KEY (project_id, categories_id),
+
+   CONSTRAINT fk_project
+       FOREIGN KEY (project_id)
+	   REFERENCES service_project(project_id),
+
+   CONSTRAINT fk_categories
+       FOREIGN KEY (categories_id)
+	   REFERENCES service_categories(categories_id)
+	   
+);
+
+
+INSERT INTO service_categories (title)
+VALUES
+('Environmental'),
+('Educational'),
+('Community'),
+('Health and Wellness');
+
+INSERT INTO service_project_categories
+(categories_id, project_id)
+VALUES
+(1,6),
+(1,3),
+(1,7),
+(1,8),
+(1,9),
+(2,8),
+(2,10),
+(3,1),
+(3,2),
+(3,11),
+(3,12),
+(3,13),
+(3,4),
+(3,14),
+(3,5),
+(3,15),
+(4,7),
+(4,12),
+(4,13),
+(4,15);

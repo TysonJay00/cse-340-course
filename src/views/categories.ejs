@@ -2,16 +2,17 @@
 
     <main>
         <h1>
-            <%= title %>
+            Service Project Categories
         </h1>
 
-        <h2>Environmental
-            Educational
-            Community Service
-            Health and Wellness
-        </h2>
+        <ul>
+            <% categories.forEach(category=> { %>
+                <li>
+                    <%= category.title %>
+                </li>
+                <% }) %>
 
-
+        </ul>
 
     </main>
 
