@@ -17,6 +17,9 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const SESSION_SECRET = process.env.SESSION_SECRET;
+if (!SESSION_SECRET) {
+    throw new Error('SESSION_SECRET environment variable is missing');
+}
 
 
 
@@ -66,7 +69,6 @@ app.use((req, res, next) => {
     next(err);
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
     console.error('Error occurred:', err.message);
     console.error('Stack trace:', err.stack);
@@ -76,6 +78,7 @@ app.use((err, req, res, next) => {
 
     const context = {
         title: status === 404 ? 'Page Not Found' : 'Server Error',
+        NODE_ENV,
         error: err.message,
         stack: err.stack,
         flash: req.flash || (() => ({
@@ -86,7 +89,17 @@ app.use((err, req, res, next) => {
         }))
     };
 
-    res.status(status).render(`errors/${template}`, context);
+    res.status(status).render(`errors/${template}`, context, (renderError, html) => {
+        if (renderError) {
+            console.error('Error rendering error page:', renderError);
+
+            return res.status(500).send(
+                '<h1>Something Went Wrong</h1><p>Please try again later.</p>'
+            );
+        }
+
+        res.send(html);
+    });
 });
 
 // Start the server LAST
