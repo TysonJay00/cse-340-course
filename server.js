@@ -17,9 +17,7 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const SESSION_SECRET = process.env.SESSION_SECRET;
-if (!SESSION_SECRET) {
-    throw new Error('SESSION_SECRET environment variable is missing');
-}
+
 
 
 
