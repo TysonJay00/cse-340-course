@@ -37,5 +37,39 @@ const getCategoryDetails = async (categoryId) => {
     return result.rows;
 }
 
-export { getAllCategories }
-export { getCategoryDetails }
+const assignCategoryToProject = async (projectId, categoryId) => {
+    const query = `
+        INSERT INTO service_project_categories
+        (project_id, categories_id)
+        VALUES ($1, $2)
+    `;
+
+    await db.query(query, [projectId, categoryId]);
+};
+
+const updateCategoryAssignments = async (projectId, categoryIds) => {
+
+    console.log('Model Project ID:', projectId);
+    console.log('Model Category IDs:', categoryIds);
+
+    const deleteQuery = `
+        DELETE FROM service_project_categories
+        WHERE project_id = $1
+    `;
+
+    await db.query(deleteQuery, [projectId]);
+
+    for (const categoryId of categoryIds) {
+        if (!categoryId || !Number.isInteger(Number(categoryId))) {
+            throw new Error(`Invalid category ID: "${categoryId}"`);
+        }
+
+        await assignCategoryToProject(projectId, categoryId);
+    }
+};
+
+export {
+    getAllCategories,
+    getCategoryDetails,
+    updateCategoryAssignments
+};
