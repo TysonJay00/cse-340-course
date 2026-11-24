@@ -12,7 +12,7 @@ import {
     showEditProjectForm,
     processEditProjectForm
 } from './controllers/projects.js';
-import { categoriesPage, showCategoryDetailPage, showAssignCategoriesForm, processAssignCategoriesForm } from './controllers/categories.js';
+import { categoriesPage, showCategoryDetailPage, showAssignCategoriesForm, processAssignCategoriesForm, categoryValidation, showNewCategoryForm, processNewCategoryForm, showEditCategoryForm, processEditCategoryForm } from './controllers/categories.js';
 import { errorsPage } from './controllers/errors.js';
 
 
@@ -33,13 +33,17 @@ router.get('/project/:id', showProjectDetailsPage);
 router.get('/new-project', showNewProjectForm);
 router.post('/new-project', projectValidation, processNewProjectForm);
 router.get('/edit-project/:id', showEditProjectForm);
-router.post('/edit-project/:id', processEditProjectForm);
+router.post('/edit-project/:id', projectValidation, processEditProjectForm);
 
 
 router.get('/categories', categoriesPage);
 router.get('/category/:id', showCategoryDetailPage);
 router.get('/assign-categories/:projectId', showAssignCategoriesForm);
 router.post('/assign-categories/:projectId', processAssignCategoriesForm);
+router.get('/new-category', showNewCategoryForm);
+router.post('/new-category', categoryValidation, processNewCategoryForm);
+router.get('/edit-category/:id', showEditCategoryForm);
+router.post('/edit-category/:id', categoryValidation, processEditCategoryForm);
 // Error-handling routes
 router.get('/test-error', errorsPage);
 

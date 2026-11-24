@@ -8,15 +8,36 @@
         <h2>
             <%= category.title %>
         </h2>
-        <% projects.forEach(project=> { %>
-            <div>
-                <h3>
-                    <a href="/project/<%= project.project_id %>">
-                        <%= project.project_title %>
-                    </a>
-                </h3>
-            </div>
-            <% }) %>
+
+        <h3>Associated Projects</h3>
+
+        <% if (projects.length> 0) { %>
+
+            <% projects.forEach(project=> { %>
+                <div>
+                    <h3>
+                        <a href="/project/<%= project.project_id %>">
+                            <%= project.project_title %>
+                        </a>
+                    </h3>
+                </div>
+                <% }) %>
+
+                    <% } else { %>
+
+                        <p>No projects are currently assigned to this category.</p>
+
+                        <% } %>
+
+                            <p>
+                                <a href="/edit-category/<%= category.categories_id %>">
+                                    Edit Category
+                                </a>
+                            </p>
+
+                            <p>
+                                <a href="/categories">Back to Categories</a>
+                            </p>
 
     </main>
 
